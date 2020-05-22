@@ -13,5 +13,5 @@ chmod 600 "$SSH_PATH/deploy_key"
 sh -c "rsync $FIRST_ARGS -e 'ssh -i $SSH_PATH/deploy_key -o StrictHostKeyChecking=no' $SECOND_ARGS $GITHUB_WORKSPACE/ $THIRD_ARGS"
 
 if [[ !-z "${SERVER_HOST}" ]]; then
-	sh -c "ssh -i $SSH_PATH/deploy_key -o StrictHostKeyChecking=no $SERVER_HOST '/usr/local/bin/php /home/working/XQ_Api/bin/swoft http:restart'"
+	sh -c "ssh -i $SSH_PATH/deploy_key -o StrictHostKeyChecking=no $SERVER_HOST '$RESTART_COMMAND'"
 fi
